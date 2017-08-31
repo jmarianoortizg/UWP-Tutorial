@@ -1,0 +1,102 @@
+http://bit.do/Windows-universal-samples
+
+=============================================================
+=====  Visual state manager =====
+=============================================================
+  xmlns:data="using:HeroExplorer.Models"
+
+  <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+
+                <VisualState x:Name="NarrowLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MyAutoSuggestBox.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="WideLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="900" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MyAutoSuggestBox.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+=============================================================
+=====  Data Binding =====
+=============================================================
+
+	-> MainPage.xaml
+		<SplitView.Content>
+          	      <GridView Name="NewsItemGrid" 
+                          HorizontalAlignment="Stretch"
+                          Margin="10,0,0,0"
+                          Background="LightGray"
+                          ItemsSource="{ x:Bind NewsItems}"> (List to puopulate)
+                      	<GridView.ItemTemplate>
+                        	<DataTemplate x:DataType="data:NewsItem">
+                        	    <local:NewsItemControl />
+                        	</DataTemplate>
+                      	</GridView.ItemTemplate>
+                      </GridView>
+            	</SplitView.Content>
+
+	-> ItemControl.xaml
+		<Image Name="myImage" Source="{ x:Bind NewsItem.Image}" />
+
+	-> ItemControl.cs
+		public Model.NewsItem NewsItem { get { return this.DataContext as Model.NewsItem; }  }
+ 		public NewsItemControl()
+        	{
+            		this.InitializeComponent();
+            		this.DataContextChanged += (s, e) => Bindings.Update();
+        	}
+
+=============================================================
+===== Static Styles =====
+=============================================================
+
+<Page.Resources>
+	<SolidColorBrush x:Key="MyBrush" Color="Brown"/>
+	<x:String x:Key="Greetings">Hello World</x:Sring>
+	<Style Target="Button" x:Key="myButtonStyle">
+		<Setter Property="Background" Value="Blue">
+		<Setter Property="FontSize" Value="36">
+	</Style>
+</PageResources>
+
+
+<TextBlock Text="{StaticResource Greetings}" ForeGround="{StaticResource myBrush}" />
+<Button Content="my button Style" Style={StaticResource myButtonStyle} 
+
+=============================================================
+===== Resource Diccionary =====
+=============================================================
+
+	-> Create a Resouse diccionary 
+	-> Resource Diccionary.xaml
+
+		<ResourceDictionary>
+			<SolidColorBrush x:key="Brush" Color="Red"/>
+		</ResourseDitionary>
+
+	-> Page
+		<Page.Resources>
+			<ResourceDictionary>
+				<ResourceDictionary.MergedDictionaries>
+					<ResourceDictionary Source="Diccionary.xmal">
+				</ResourceDictionary.MergedDictionaries>
+			</ResourceDictionary>
+		</PageResources>
+		
+		
+
+
+

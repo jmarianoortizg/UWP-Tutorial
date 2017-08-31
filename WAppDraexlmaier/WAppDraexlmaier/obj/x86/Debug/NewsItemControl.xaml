@@ -1,0 +1,53 @@
+﻿<UserControl x:ConnectionId='1'
+    x:Class="WAppDraexlmaier.NewsItemControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WAppDraexlmaier"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid x:ConnectionId='2' Name="MainPanel" Background="White" Margin="10" Height="275" Width="200">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                
+                <VisualState x:ConnectionId='3' x:Name="NarrowLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainPanel.Width" Value="200" />
+                        <Setter Target="MainPanel.Height" Value="275" />
+                        <Setter Target="HeadlineTextBox.FontSize" Value="18" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:ConnectionId='4' x:Name="WideLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="900" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainPanel.Width" Value="400" />
+                        <Setter Target="MainPanel.Height" Value="400" />
+                        <Setter Target="HeadlineTextBox.FontSize" Value="26" /> 
+                    </VisualState.Setters>
+                </VisualState> 
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
+        <Image x:ConnectionId='5' Name="myImage"                                   />
+        <RelativePanel Grid.Row="1" Margin="10">
+            <TextBlock x:ConnectionId='6'                                    Name="HeadlineTextBox" RelativePanel.AlignTopWithPanel="True" FontSize="18" TextWrapping="Wrap" />
+            <TextBlock x:ConnectionId='7'                                    RelativePanel.Below="HeadlineTextBox"/>
+            <TextBlock x:ConnectionId='8'                                    RelativePanel.AlignBottomWithPanel="True" FontSize="10"/>
+        </RelativePanel>
+    </Grid>
+</UserControl>
+

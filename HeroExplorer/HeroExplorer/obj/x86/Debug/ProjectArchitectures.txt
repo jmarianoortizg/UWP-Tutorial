@@ -1,0 +1,1 @@
+C:\Users\SD\Desktop\UWP\Beginners Tutorial\HeroExplorer\HeroExplorer\HeroExplorer.csproj;x86

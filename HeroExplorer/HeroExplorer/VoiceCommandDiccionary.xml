@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.1">
+  <CommandSet xml:lang="en-us" Name="ExampleAppCommandSet_en-us">
+    <CommandPrefix> example app </CommandPrefix>
+    <Example> Refresh the character list </Example>
+
+    <Command Name="refresh">
+      <Example> refresh the caracter list  </Example>
+      <ListenFor> refresh [the] [character] list </ListenFor>
+      <ListenFor> refresh [the] characters </ListenFor>
+      <Feedback> Refreshin character list </Feedback>
+      <Navigate/>
+    </Command>
+  
+  </CommandSet>
+
+  <!-- Other CommandSets for other languages -->
+
+</VoiceCommands>
